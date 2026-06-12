@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Group Website Project</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#050505,#111827,#050505);
+    color:white;
+    min-height:100vh;
+    padding-bottom:80px;
+}
+
+/* HEADER */
+header{
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
+    border-bottom:2px solid #00ffff;
+    box-shadow:0 0 20px #00ffff;
+    text-align:center;
+    padding:20px;
+}
+
+header h1{
+    color:#00ffff;
+    text-shadow:0 0 10px #00ffff;
+    margin-bottom:10px;
+}
+
+nav{
+    margin-top:10px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#00ffff;
+    text-shadow:0 0 10px #00ffff;
+}
+
+/* SECTIONS */
+section{
+    display:none;
+    max-width:900px;
+    margin:40px auto;
+    padding:30px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(0,255,255,0.4);
+    box-shadow:0 0 20px rgba(0,255,255,0.3);
+}
+
+section.active{
+    display:block;
+    animation:fadeIn 0.7s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+h2{
+    color:#00ffff;
+    margin-bottom:15px;
+    text-shadow:0 0 10px #00ffff;
+}
+
+h3{
+    color:#7df9ff;
+    margin-top:20px;
+}
+
+/* IMAGE */
+img{
+    width:300px;
+    border-radius:15px;
+    margin-top:15px;
+    border:3px solid #00ffff;
+    box-shadow:0 0 20px #00ffff;
+}
+
+/* GROUP MEMBERS */
+ul{
+    margin-left:20px;
+}
+
+li{
+    margin:8px 0;
+}
+
+/* FORM */
+input,
+textarea{
+    width:100%;
+    padding:12px;
+    margin-top:8px;
+    background:#0f172a;
+    color:white;
+    border:2px solid #00ffff;
+    border-radius:10px;
+    outline:none;
+}
+
+input:focus,
+textarea:focus{
+    box-shadow:0 0 15px #00ffff;
+}
+
+/* BUTTON */
+button{
+    margin-top:10px;
+    padding:12px 25px;
+    border:none;
+    border-radius:10px;
+    background:#00ffff;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px #00ffff;
+}
+
+/* MESSAGE */
+#msg{
+    margin-top:15px;
+    color:#00ff88;
+    font-weight:bold;
+}
+
+/* FOOTER */
+footer{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    text-align:center;
+    padding:15px;
+    background:black;
+    border-top:2px solid #00ffff;
+    box-shadow:0 0 20px #00ffff;
+    color:white;
+}
+```
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Group Project Website</h1>
+    <nav>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('about')">About</a>
+        <a onclick="showPage('contact')">Contact</a>
+    </nav>
+</header>
+
+<!-- HOME PAGE -->
+<section id="home" class="active">
+    <h2>Welcome</h2>
+    <p>This is our static website project using HTML, CSS, and JavaScript.</p>
+
+    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" height="300" width="300" alt="Group Image">
+
+    <h3>Course Title:</h3>
+    <p>Web Development Fundamentals</p>
+</section>
+
+<!-- ABOUT PAGE -->
+<section id="about">
+    <h2>About Our Project</h2>
+
+    <h3>Program</h3>
+    <p>Data Science And Analytics</p>
+
+    <h3>Group Members</h3>
+    <ul>
+        <li>Rockson Kwesi Asamoah - 2425403551</li>
+        <li>Owusu Otimah Adelaide - 2425400934</li>
+        <li>Pascal Monnou Sourou Dieu-donne - 2425402840</li>
+        <li>Milwonorvi Kale Jiagge - 2425400708</li>
+        <li>Zeinab Yussif - 2425402619</li>
+    </ul>
+
+    <h3>Project Description</h3>
+    <p>
+        This project demonstrates our understanding of HTML, CSS, and JavaScript
+        by building a simple multi-section website.
+    </p>
+</section>
+
+<!-- CONTACT PAGE -->
+<section id="contact">
+    <h2>Contact Us</h2>
+
+    <form onsubmit="return submitForm()">
+        <input type="text" placeholder="Your Name" required><br><br>
+        <input type="email" placeholder="Your Email" required><br><br>
+        <textarea placeholder="Your Message" required></textarea><br><br>
+        <button type="submit">Send</button>
+    </form>
+
+    <p id="msg"></p>
+</section>
+
+<footer>
+    &copy; GCTU 2026 Group Project Website
+</footer>
+
+<script>
+    function showPage(page) {
+        let sections = document.querySelectorAll("section");
+        sections.forEach(sec => sec.classList.remove("active"));
+
+        document.getElementById(page).classList.add("active");
+    }
+
+    function submitForm() {
+        document.getElementById("msg").innerText =
+            "Message sent successfully!";
+        return false;
+    }
+</script>
+
+</body>
+</html>
